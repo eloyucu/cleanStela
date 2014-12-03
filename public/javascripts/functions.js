@@ -1,5 +1,4 @@
-var server = "http://localhost:8080";
-
+var server = "http://"+window.location.host;
 
 jQuery('document').ready(function()
 {
