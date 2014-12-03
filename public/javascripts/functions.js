@@ -1,4 +1,4 @@
-var server = "http://"+window.location.host;
+var server = "https://"+window.location.host;
 
 jQuery('document').ready(function()
 {
