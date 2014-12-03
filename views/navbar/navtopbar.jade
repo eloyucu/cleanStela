@@ -1,0 +1,55 @@
+nav(class="navbar navbar-default navbar-fixed-top" id="navbar-magellan" role="navigation")
+	div.container-fluid
+		div.navbar-header
+			button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+				span.sr-only Toggle navigation
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a(class="navbar-brand" href="/") CleanStela
+		div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+			ul.nav.navbar-nav
+				if user
+					li.dropdown 
+						a(href="#" class="dropdown-toggle" data-toggle="dropdown") #{t('nav_building')}
+							span.caret
+						ul(class="dropdown-menu" role="menu")
+							li: a(href="/my_buildings") #{t("nav_building_my_buildings")}
+							li: a(href="/choose_building") #{t("nav_building_choose_buildings")}
+				if user && user.rol == "pedroPicapiedra"
+					li.dropdown 
+						a(href="#" class="dropdown-toggle" data-toggle="dropdown") SuperAdmin
+							span.caret
+						ul(class="dropdown-menu" role="menu")
+							li: a(href="/user") Logging
+							li: a(href="/singup") Signing Up
+							li.divider
+							li: a(href="/removesession") Close Session
+			ul.nav.navbar-nav.navbar-right
+				if user && (user.rol == "Admin" || user.rol == "pedroPicapiedra")
+					li.dropdown 
+						a(href="#" class="dropdown-toggle" data-toggle="dropdown") #{t("nav_admin")}
+							span.caret
+						ul(class="dropdown-menu" role="menu")
+							li: a(href="/new_building") #{t("nav_admin_new_building")}
+							li: a(href="/admin_buildings") #{t("nav_admin_admin_building")}
+							li: a(href="#") #{t("nav_admin_remove_building")}
+							li.divider
+							li: a(href="/removesession") #{t("nav_user_close")}
+				else if !user
+					li.dropdown 
+						a(href="#" class="dropdown-toggle" data-toggle="dropdown") #{t("nav_user")}
+							span.caret
+						ul(class="dropdown-menu" role="menu")
+							li: a(href="/user") #{t("nav_user_login")}
+							li: a(href="/signup") #{t("nav_user_sign")}
+				if user
+					li.dropdown 
+						a(href="#" class="dropdown-toggle" data-toggle="dropdown") #{t("nav_general_email")}
+							span.caret
+						ul(class="dropdown-menu" role="menu")
+							li: a(href="/email/admin") #{t("nav_general_email_admin")}
+							li: a(href="/email/comunity") #{t("nav_general_email_comunity")}
+							li.divider
+							li: a(href="/email/superadmin") #{t("nav_general_email_superadmin")}
+					li: a(href="/removesession") #{t("nav_user_close")}

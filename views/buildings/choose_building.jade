@@ -1,0 +1,43 @@
+extends ..\layout
+block scripts
+	script(type='text/javascript', src='/javascripts/building/my_builds.js')
+block content	
+	h1=t('user_choose_title')
+	div(class="bs-callout bs-callout-info col-sm-12")
+		h4=t('user_choose_explanation_title')
+		p=t('user_choose_explanation')
+	hr
+	div.input-group.col-sm-4.col-xs-12
+		span.input-group-addon
+			span.glyphicon.glyphicon-search
+		input(type="text" class="form-control" id="search_building")
+	hr
+	div(class="panel-group" id="accordion" role="tablist" aria-multiselectable="true")
+		for building in buildings
+			div(class="panel panel-default search-container" data-id_control="collapse#{building._id}")
+				div(class="panel-heading" role="tab" id="heading#{building._id}")
+					h4.panel-title
+						a(data-toggle="collapse" data-parent="#accordion" href="#collapse#{building._id}" aria-expanded="false" aria-controls="collapse#{building._id}")
+							div.row
+								div.col-xs-1
+									span.glyphicon.glyphicon-map-marker
+								div.col-xs-4.inline.search-hit #{building.address[0].address}
+								div.col-xs-3.inline.search-hit #{building.address[0].city}
+								div.col-xs-2.inline.search-hit.disapear #{building.address[0].province}
+								div.col-xs-2.inline.search-hit.disapear #{building.address[0].state}
+			div(id="collapse#{building._id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading#{building._id}")
+				div.panel-body
+					div(class="setup-table table" id="setup-#{building._id}")
+						for flat in building.flats
+							div.table-row.search_hit.left-float
+								div.table-cell.inline.short.selectable.user-select-flat
+									span(class="label label-success content-label" id="#{building._id}-#{flat}")
+										span.glyphicon.glyphicon-home.right-margin
+										div(class="flat-value inline" data-building-id="#{building._id}") #{flat}
+						else
+							div.no-flats Aún no hay pisos incorporados al edificio.
+		else
+			li Lo sentimos aún no hay edificios bajo su administración.
+	hr 
+	for userFlat in userFlats 
+		div(data-this-my-flat="#{userFlat.building_id}-#{userFlat.flat}" hidden="true" class="this-my-flat")

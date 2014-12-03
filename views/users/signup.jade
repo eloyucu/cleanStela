@@ -1,0 +1,46 @@
+include ..\layout
+	block scripts
+		script(type='text/javascript', src='/javascripts/user/sign_log.js')
+	block content
+		div.box-form
+			h2=t('user_signup_wellcome')
+			p=t('user_fill_all_fields')
+			form(class="form-horizontal" role="form")
+				div.form-group
+					label(for="email" class="col-xs-4 control-label") #{t('user_fill_email')}
+					div.col-xs-8.col-sm-5
+						input(type="text" id="email" class="data input-group form-control" required)
+				div.form-group
+					label(for="name" class="col-xs-4 control-label") #{t('user_fill_user_name')}
+					div.col-xs-8.col-sm-5
+						input(type="text" id="name" class="data form-control" required)
+				div.form-group
+					label(for="password" class="col-xs-4 control-label") #{t('user_fill_password')}
+					div.col-xs-8.col-sm-5
+						input(type="password" id="password" class="data input-group form-control" required)
+				div.form-group
+					label(for="rol-select" class="col-xs-4 control-label") #{t('user_signup_fill_rol')}
+					div(id='rol-select' class='btn-group' data-toggle='buttons')
+						label.btn.btn-primary
+							input(type='radio' name='rolOptions' class="rol-select-class" id='Admin' data-value="Admin")
+							p=t('nav_admin')
+						label.btn.btn-primary
+							input(type='radio' name='rolOptions' class="rol-select-class" id='finalUser' data-value="finalUser")
+							p=t('nav_user')
+				div.form-group
+					label(class="col-xs-4 control-labe" for="lang") #{t('user_lang')}
+					div(class="btn-group" id="lang" data-toggle="buttons")
+						label.btn.btn-primary
+							input(type="radio" name="langOptions" id="es" autocomplete="off" data-value="es") 
+							|Español
+						label.btn.btn-primary
+							input(type="radio" name="langOptions" id="es_va" autocomplete="off" data-value="es_va") 
+							|Valencià
+						label.btn.btn-primary
+							input(type="radio" name="langOptions" id="en" autocomplete="off" data-value="en") 
+							|English
+				div.form-group
+					div.col-md-offset-2
+						input(id="sign_log_button" class="btn button btn-default" data-type="new_user" type="button" value="#{t('user_signup_send_button')}")
+			div#not-input.alerts.total.hide
+				div(class="alert alert-danger" role="alert") #{t('user_fill_all_fields_mandatory')}

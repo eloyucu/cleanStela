@@ -1,0 +1,55 @@
+extends ..\layout
+block content
+	h1=t('calendar_title')
+	div(class="bs-callout bs-callout-info col-sm-12")
+		div.calendar
+			|#{date.day}
+			em #{date.month}
+		h4=t('general_search_title')
+		p=t('general_search')
+	div.input-group.col-sm-4.col-md-offset-2
+		span.input-group-addon
+			span.glyphicon.glyphicon-search
+		input(type="text" class="form-control" id="search_building")
+	hr
+	div(class="panel-group" id="accordion" role="tablist" aria-multiselectable="true")
+		for building in buildings
+			div(class="panel panel-default search-container" data-id_control="collapse#{building._id}#{building.flat}")
+				div(class="panel-heading" role="tab" id="heading#{building._id}")
+					h4.panel-title
+						a(data-toggle="collapse" data-parent="#accordion" href="#collapse#{building._id}#{building.flat}" aria-expanded="false" aria-controls="collapse#{building._id}#{building.flat}")
+							div.row
+								div.col-xs-1
+									span.glyphicon.glyphicon-map-marker
+								div.col-xs-4.inline.search-hit #{building.address.address}
+								div.col-xs-3.inline.search-hit #{building.address.city}
+								div.col-xs-3.inline.search-hit #{building.flat}
+			div(id="collapse#{building._id}#{building.flat}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading#{building._id}")
+				div.panel-body
+					div(class="setup-table table" id="setup-#{building._id}")
+						div.calendar #{building.flat}
+						for calendar in building.calendars
+							div.calendar.calendar-big #{calendar.clean_month}
+								div.clear
+								em
+									-index=0
+									-for(var i=0; i<calendar.weekStart;++i) {
+										div.table-calendar
+										-index++
+									-}
+									-for(var i=(index+1); i<=(calendar.totalDays+index);++i) {
+										-if((i-index)>=calendar.firstdayClean && (i-index)<=calendar.enddayClean)
+											div(class="table-calendar selected-calendar" id="#{i}-#{calendar.clean_month}-#{building._id}-#{building.flat}") #{i-index}
+										-else
+											div(class="table-calendar" id="#{i}-#{calendar.clean_month}-#{building._id}-#{building.flat}") #{i-index}
+										-if(i%7==0)
+											div.clear
+									-}
+						
+		else
+			div(class="alert alert-warning alert-dismissible" id="myAlert" role="alert")
+				button(type="button" class="close" data-dismiss="alert")
+					span(aria-hidden="true") &times;
+					span(class="sr-only") Close
+				strong=t("calendar_no_building_warning")
+				| #{t("calendar_no_building")}

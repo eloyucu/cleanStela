@@ -1,0 +1,20 @@
+extends ..\layout
+block content
+	h1=t('email_superadmin_title')
+	div(class="bs-callout bs-callout-info col-sm-12")
+		h4=t('email_superadmin_explanation_title')
+		p=t('email_superadmin_explanation')
+	form(class="form-horizontal" role="form" method="POST" action="superadmin")
+		div.form-group
+			label(for="title" class="col-sm-2 control-label") Título
+			div.col-xs-10.col-sm-5
+				input(type="text" name="title" id="title" class="data form-control" required)
+		div.form-group
+			label(for="message" class="col-sm-2 control-label") Mensaje
+			div.col-xs-10.col-sm-5
+				textarea(type="text" name="message" id="message" class="data form-control" required)
+		div.form-group
+			div.col-sm-offset-10
+				input(id="send_the_mail" class="btn button btn-default" type="submit" value="#{t('email_send_button')}")
+	div#not-input.alerts.total.hide
+		div(class="alert alert-danger" role="alert") #{t('user_fill_all_fields_mandatory')}

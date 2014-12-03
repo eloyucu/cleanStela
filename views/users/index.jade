@@ -1,0 +1,9 @@
+extends ../layout
+block content
+	h1 #{t('user_page_wellcome')} #{user.name}
+	div(class="bs-callout bs-callout-info col-sm-12")
+		h4=t('user_friendly_title')
+		p=t('user_friendly')
+		hr
+		h4=t('user_mail_title')
+		p=t('user_mail')

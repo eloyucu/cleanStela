@@ -1,0 +1,87 @@
+{
+	"nav_user":"Usuario",
+	"nav_user_sign":"Registrarse",
+	"nav_user_login":"Acceder",
+	"nav_user_close":"Cerrar sesión",
+	"nav_admin":"Administrador",
+	"nav_admin_new_building":"Nuevo Edificio",
+	"nav_admin_admin_building":"Configurar Edificio",
+	"nav_admin_remove_building":"Eliminar Edificio",
+	"nav_building":"Edificios",
+	"nav_building_my_buildings":"Mis Fincas",
+	"nav_building_choose_buildings":"Elegir Finca",
+	"nav_general_email":"Mensaje",
+	"nav_general_email_admin":"Administrador",
+	"nav_general_email_superadmin":"Super Administrador",
+	"nav_general_email_comunity":"Comunidad",
+	
+	"general_search_title":"Búsqueda más fácil.",
+	"general_search":"Puede buscar el edificio que desea escribiendo en el área de búsqueda. Puede introducir el nombre de la calle, del pueblo/ciudad, de la provincia o del país... aunque una búsqueda más concreta traerá consigo resultados mejor filtrados.",
+	
+	"landing_wellcome":"Bienvenidos a CleanStela",
+	"landing_instructions":"El primer paso para acceder al interior de la aplicación y poder disfrutar de las ventajas que ofrece (de momento limitadas), tiene que registrarse. Para ello vaya al menú de \"Usuario\" y seleccione \"Registro\". Si usted ya está registrado y ha cerrado la sesión despliegue el \"Usuario\" y seleccione \"Acceder\"",
+	"landing_presentation":"Una aplicación que nos ayudará a tener limpio nuestro edificio.",
+	"landing_page":"Entra y mira el turno de limpieza o cuándo será tu turno.",
+
+	"user_page_wellcome":"Bienvenido ",
+	"user_friendly_title":"¿Por qué así?",
+	"user_friendly":"Esta aplicación ha sido diseñada tratando de hacerla lo más diáfana posible, eliminando gran parte de decoración y posibles opciones de configuración que puedan ofuscar al usuario. Esta intención se debe al propósito de hacer llegar la aplicación web al mayor número de personas posibles sin que la barrera tecnológica sea un problema. Esperamos que disfruten.",
+	"user_mail_title":"Mensajes para dejar las cosas claras",
+	"user_mail":"Puedes enviar mensajes al administración de alguna de tus viviendas sobre aspectos relacionados con la administración del edificio, o enviármelos a mi, el 'director' de todo esto. O sea, si ha encontrado algún error en el funcionamiento, y quiere echarmelo en cara para que lo arregle, puede hacerlo mediante esta manera. También se puede enviar un mensaje a la comunidad, o sea, para algo que quiera que toda la comunidad sea partícipe, puede hacerlo mediante esta opción.",
+	
+	
+	"user_fill_all_fields":"Rellene todos los campos correctamente, por favor.",
+	"user_fill_all_fields_mandatory":"Rellene todos los campos, por favor.",
+	"user_fill_user_name":"Nombre de usuario",
+	"user_fill_password":"Contraseña",	
+	"user_fill_email":"Email",	
+	
+	"user_login_wellcome":"Bienvenido a la página de control de acceso.",
+	"user_login_send_button":"Acceder",
+	
+	"user_signup_wellcome":"Bienvenido a la página de registro.",
+	"user_signup_fill_rol":"Rol",
+	"user_signup_send_button":"Registrase",
+	
+	"user_choose_title":"Edificios por su cuenta.",
+	"user_choose_explanation_title":"Puede agregar o eliminar los pisos a su cuenta personal.",
+	"user_choose_explanation":"Es muy simple. Simplemente, haz clic sobre el edificio donde vivas para desplegar la lista de viviendas que tiene asociado, haz clic sobre la tuya y verás como cambia de color, si vuelves a hacer clic volverá a cambiar a su color original. Las viviendas de color naranja están asociadas a tu perfil. ",
+	
+	"user_admin_search_info":"Comience a escribir los términos de búsqueda. A medida que escriba irán desapareciendo los elementos NO coincidentes.",
+	
+	"buildings_new_one_title":"Inserte nuevo edificio",
+	"buildings_new_one_explanation_title":"Y ahora... ¿Qué?",
+	"buildings_new_one_explanation":"Los edificios tienen que estar bien creados para que los usuarios los encuentren, para ello, además del nombre de la calle del edificio, deberá poner el número. Si dos edificios comparten turnos de limpieza no hará falta poner número y se pondrá una marca identificativa después de la dirección, además en casos como éste surjirá el problema que haya varias puertas con el mismo nombre, por ejemplo: 1A, en casos como éste se podría proceder del siguiente modo, 101A para el 1A del bloque 1, y 201A para el 1A del bloque dos.",
+	"buildings_new_one_address":"Dirección",
+	"buildings_new_one_city":"Ciudad",
+	"buildings_new_one_ZIP":"Código Postal",
+	"buildings_new_one_province":"Provincia",
+	"buildings_new_one_state":"Estado/País",
+	"buildings_new_one_send":"Crear",
+	
+	"admin_admin_building_title":"Administra tus edificios.",
+	"admin_no_buildings":"Lo sentimos aún no hay edificios bajo su administración.",
+	"admin_no_flats":"Aún no hay pisos incorporados al edificio.",
+	
+	"calendar_title":"Revise las fechas de sus viviendas.",
+	"calendar_no_building_warning":"Atención.",
+	"calendar_no_building":"Lo sentimos aún no hay edificios asociados a su perfil.",
+	
+	"email_admin":"Notificaiones a su administrador",
+	"email_admin_title":"Pregúntale tus dudas",
+	"email_admin_paragraph":"Si tienes algo serio que decir a tu administrador, alguna duda razonable sobre el funcionamiento de alguno de los aspectos relacionados con la vivienda, puedes enviarle un mensaje a través de nuestra plataforma.",
+	"email_comunity":"Mensajes para todos.",
+	"email_comunity_title":"Avisa de las noticias importantes.",
+	"email_comunity_paragraph":"Notifica a todos tus vecinos los que se habló en la última junta, o la fecha de la próxima junta, así como los motivos de la misma. Envía un mensaje con las cosas importantes de la finca y contesta a los temas propuestos por otras personas.",
+	"email_send_button":"Enviar",
+	"email_superadmin_title":"¿Problemas en la plataforma?",
+	"email_superadmin_explanation_title":"Envíame un mensaje, cuéntame tus penas.",
+	"email_superadmin_explanation":"En serio... gracias por avisarme de los posibles errores que contenga la aplicación. En cuanto su mensaje sea enviado, intentaré ponerme en contacto con usted y solucionarlo lo antes posible.",
+	"email_all_nice_title":"Felicidades, has enviado el mensaje.",
+	"email_all_nice":"Si el mensaje ha sido enviado al equipo de producción intetaremos darle solución lo más tempranamente posible. Si el mensaje ha sido para el administrador, que Dios no coja confesados!!! En serio... si es para el administrador de su finca, confiamos que la diligencia en el trabajo haga que solucione todo lo rápido posible el problema",
+	"email_cominity_send_tab":"Enviar nuevo",
+	"email_cominity_messages_tab":"Mensajes enviados",
+	"email_no_msn_title":"Sin mensajes",
+	"email_no_msn":"Aún no hay ningún mensaje en esta comunidad",
+	"email_response_button":"Responder"
+}

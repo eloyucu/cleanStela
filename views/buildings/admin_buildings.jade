@@ -1,0 +1,66 @@
+extends ..\layout
+block scripts
+	script(type='text/javascript', src='/javascripts/building/my_builds.js')
+block content
+	h1=t('admin_admin_building_title')
+	div(class="bs-callout bs-callout-info col-sm-12")
+		h4=t('general_search_title')
+		p=t('general_search')
+	hr
+	div.input-group.col-sm-4
+		span.input-group-addon
+			span.glyphicon.glyphicon-search
+		input(type="text" class="form-control" id="search_building")
+	hr
+	div(class="panel-group" id="accordion" role="tablist" aria-multiselectable="true")
+		for building in buildings
+			div(class="panel panel-default search-container" data-id_control="collapse#{building._id}")
+				div(class="panel-heading" role="tab" id="heading#{building._id}")
+					h4.panel-title
+						a(data-toggle="collapse" data-parent="#accordion" href="#collapse#{building._id}" aria-expanded="false" aria-controls="collapse#{building._id}")
+							div.row
+								div.col-xs-1
+									span.glyphicon.glyphicon-map-marker
+								div.col-sm-4.col-xs-6.inline.search-hit #{building.address[0].address}
+								div.col-sm-3.col-xs-5.inline.search-hit #{building.address[0].city}
+								div.col-sm-2.inline.search-hit.disapear #{building.address[0].province}
+								div.col-sm-2.inline.search-hit.disapear #{building.address[0].state}
+			div(id="collapse#{building._id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading#{building._id}")
+				div.panel-body
+					div.table.bs-callout-info.bs-callout
+						div.table-row
+							div.inline.short 
+								div.input-group.input-group-sm
+									span.input-group-addon
+										span.glyphicon.glyphicon-home
+									input(type="text" class="form-control flat-type-control-number" id="number#{building._id}")
+							div.inline.short
+								div.input-group.input-group-sm
+									span.input-group-addon
+										span.glyphicon.glyphicon-font
+									input(type="text" class="form-control flat-type-control-letter" id="letter#{building._id}")
+							div.inline.input-group.input-group-sm
+								button(type="button" class="btn btn-info inline setup-flat-adds" data-operation="add" data-building-id="#{building._id}")
+									span.glyphicon.glyphicon-plus
+							div
+								button(type="button" class="btn btn-info upload" data-building-id="#{building._id}")
+									span.glyphicon.glyphicon-upload.right-margin
+									|Guardar
+					div.clear
+					hr
+					div(class="setup-table table" id="setup-#{building._id}")
+						for flat in building.flats
+							div.table-row.search_hit.left-float
+								div.table-cell.inline.short.selectable
+									span(class="label label-success content-label cleanTurn #{building._id}" data-cleanTurn-building-id="#{building._id}" id="clean-turn-#{building._id}-#{flat}")
+										span.glyphicon.glyphicon-home.right-margin
+										div.flat-value.inline #{flat}
+								div.table-cell.inline.input-group.input-group-sm
+									button(type="button" class="btn inline setup-flat-substract" data-operation="substract")
+										span.glyphicon.glyphicon-minus
+						else
+							div.no-flats=t('admin_no_flats')
+			div(class="notvisible consult-clean-turn" data-clean-turn="clean-turn-#{building._id}-#{building.cleanTurn}")
+		else
+			li=t('admin_no_buildings')
+	div#special-content
