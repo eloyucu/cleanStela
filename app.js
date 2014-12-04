@@ -34,7 +34,6 @@ i18n.init({
     saveMissing: true,
     debug: true,
 	lng:"es",
-	cookieDomain: "*.mydomain.com",
     sendMissingTo: 'fallback'
 });
 
@@ -42,6 +41,7 @@ i18n.registerAppHelper(app)
     .serveClientScript(app)
     .serveDynamicResources(app)
     .serveMissingKeyRoute(app);
+	
 /*
 i18n.serveWebTranslate(app, {
     i18nextWTOptions: {

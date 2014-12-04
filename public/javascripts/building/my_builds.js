@@ -1,7 +1,7 @@
 jQuery('document').ready(function()
 {
 	$('#myAlert').on('closed.bs.alert', function () {
-		alert("HOLA");
+		alert("HOLA es el id myAlert en publi/javascript/my_builds.js ");
 	});
 	jQuery('#accordion').collapse();
 	jQuery('.upload').on('click', function()
@@ -23,8 +23,8 @@ jQuery('document').ready(function()
 			});
 		}
 		var data = 'building={"flats":' + JSON.stringify(flats) + ',"_id":"' + data_building_id + '", "cleanTurn":"' + cleanTurn + '"}' ;
-		//alert(data);
-		if(cleanTurn!="aaa&&&%%%111") makeTheRequest('post', 'admin_buildings', data, 'json', onSuccessSignLog, onErrorGenericAJAX);
+		//alert(admin_buildings);
+		if(cleanTurn!="aaa&&&%%%111") makeTheRequest('POST', 'admin_buildings', data, 'json', onSuccessSignLog, onErrorGenericAJAX);
 		else alert("Es necesario marcar una de las viviendas como el actual turno de limpieza");
 	});
 	jQuery('.setup-flat-adds').on('click', function()

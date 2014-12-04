@@ -1,4 +1,4 @@
-var server = "https://"+window.location.host;
+var server = getAbsolutePath();
 
 jQuery('document').ready(function()
 {
@@ -31,6 +31,12 @@ jQuery('document').ready(function()
 		});
 	});
 });
+function getAbsolutePath() {
+    var loc = window.location;
+    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+}
+/*
 jQuery(window).load(function()
 {
 	makeTheMagellan();
@@ -60,7 +66,7 @@ function makeTheMagellan()
 			menu.addClass('navbar-static-top');
 		}
 	});
-}
+}*/
 function makeTheRequest(method, url, data, dataType, onSuccess, onError, onComplete)
 {
 	jQuery.ajax({

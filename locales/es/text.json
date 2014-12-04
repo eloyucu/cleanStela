@@ -17,6 +17,7 @@
 	
 	"general_search_title":"Búsqueda más fácil.",
 	"general_search":"Puede buscar el edificio que desea escribiendo en el área de búsqueda. Puede introducir el nombre de la calle, del pueblo/ciudad, de la provincia o del país... aunque una búsqueda más concreta traerá consigo resultados mejor filtrados.",
+	"general_warning":"¡¡Ojito!!",
 	
 	"landing_wellcome":"Bienvenidos a CleanStela",
 	"landing_instructions":"El primer paso para acceder al interior de la aplicación y poder disfrutar de las ventajas que ofrece (de momento limitadas), tiene que registrarse. Para ello vaya al menú de \"Usuario\" y seleccione \"Registro\". Si usted ya está registrado y ha cerrado la sesión despliegue el \"Usuario\" y seleccione \"Acceder\"",
@@ -28,6 +29,11 @@
 	"user_friendly":"Esta aplicación ha sido diseñada tratando de hacerla lo más diáfana posible, eliminando gran parte de decoración y posibles opciones de configuración que puedan ofuscar al usuario. Esta intención se debe al propósito de hacer llegar la aplicación web al mayor número de personas posibles sin que la barrera tecnológica sea un problema. Esperamos que disfruten.",
 	"user_mail_title":"Mensajes para dejar las cosas claras",
 	"user_mail":"Puedes enviar mensajes al administración de alguna de tus viviendas sobre aspectos relacionados con la administración del edificio, o enviármelos a mi, el 'director' de todo esto. O sea, si ha encontrado algún error en el funcionamiento, y quiere echarmelo en cara para que lo arregle, puede hacerlo mediante esta manera. También se puede enviar un mensaje a la comunidad, o sea, para algo que quiera que toda la comunidad sea partícipe, puede hacerlo mediante esta opción.",
+	"user_pass_not_match":"Revisa tus datos. El nombre de usuario y contraseña parecen no coincidir.",
+	"user_email_registered":"El correo %s está registrado. En caso de que tú seas el propietario de ese correo, accede <a href='/user'>aquí</a>",
+	"user_name_registered":"El nombre de usuario %s está registrado. En caso de que éste sea tu nick, accede <a href='/user'>aquí</a>",
+	"user_admin_power_title":"Un gran poder, conlleva una gran responsabilidad.",
+	"user_admin_power":"La tarea de administrador debería estar reservada a la persona encargada de esas labores en el edificio, bien sea un profesional gestor de fincas o el presidente de turno de la comunidad. En cualquier caso, el administrador deberá ser quien responda a las diversas dudas de los usuarios del edificio.",
 	
 	
 	"user_fill_all_fields":"Rellene todos los campos correctamente, por favor.",
@@ -35,6 +41,7 @@
 	"user_fill_user_name":"Nombre de usuario",
 	"user_fill_password":"Contraseña",	
 	"user_fill_email":"Email",	
+	"user_lang":"Idioma",
 	
 	"user_login_wellcome":"Bienvenido a la página de control de acceso.",
 	"user_login_send_button":"Acceder",

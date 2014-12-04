@@ -1,22 +1,24 @@
 include ../layout
-	block scripts
-		script(type='text/javascript', src='/javascripts/user/sign_log.js')
 	block content
 		div.box-form
 			h2=t('user_login_wellcome')
 			p=t('user_fill_all_fields')
-			form(class="form-horizontal" role="form")
+			form(class="form-horizontal" role="form" method="POST" action="user")
 				div.form-group
 					label(for="name" class="col-sm-2 control-label") #{t('user_fill_user_name')}
 					div.col-xs-10.col-sm-5
-						input(type="text" id="name" class="data form-control" placeholder="#{t('user_fill_user_name')}" required)
+						input(type="text" id="name" name="name" class="data form-control" placeholder="#{t('user_fill_user_name')}" required)
 				div.form-group
 					label(for="password" class="col-sm-2 control-label") #{t('user_fill_password')}
 					div.col-xs-10.col-sm-5
-						input(type="password" id="password" class="data input-group form-control" placeholder="#{t('user_fill_password')}" required)
+						input(type="password" id="password" name="password" class="data input-group form-control" placeholder="#{t('user_fill_password')}" required)
 				div.form-group
 					div.col-md-offset-2
-						input(id="sign_log_button" class="btn button btn-default" data-type="user" type="button" value="#{t('user_login_send_button')}")
-		div#not-input.alerts.total.hide
-			div(class="alert alert-danger" role="alert") #{t('user_fill_all_fields_mandatory')}
-		div#special
+						input(id="sign_log_button" class="btn button btn-default" data-type="user" type="submit" value="#{t('user_login_send_button')}")
+				if not_match
+					div(class="alert alert-danger alert-dismissible" role="alert")
+						button(type="button" class="close" data-dismiss="alert")
+							span(aria-hidden="true") &times;
+							span(class="sr-only") Close
+						strong #{t('general_warning')} 
+						| #{t('user_pass_not_match')}

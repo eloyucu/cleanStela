@@ -33,7 +33,7 @@ body
 }
 .ocuppy-all
 {
-	position:absolute;
+	position:fixed;
 	top:0;
 	right:0;
 	z-index:99;
@@ -118,6 +118,16 @@ h4, .h4 {
 }
 .bs-callout-danger {
 	border-left-color: #d9534f;
+}
+.bs-callout-danger-danger h4
+{
+	font-size:1.66em;
+}
+.bs-callout-danger-danger {
+	border-left-color: #d9534f;
+	border-right-color: #d9534f;
+	border-right-width: 5px;
+	background-color:white;
 }
 .bs-callout-warning {
 	border-left-color: #f0ad4e;

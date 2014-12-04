@@ -1,46 +1,64 @@
 include ../layout
 	block scripts
-		script(type='text/javascript', src='/javascripts/user/sign_log.js')
+		script(type='text/javascript', src='/javascripts/user/sign.js')
 	block content
 		div.box-form
 			h2=t('user_signup_wellcome')
 			p=t('user_fill_all_fields')
-			form(class="form-horizontal" role="form")
+			form(class="form-horizontal" role="form" action="new_user" method="POST")
 				div.form-group
 					label(for="email" class="col-xs-4 control-label") #{t('user_fill_email')}
 					div.col-xs-8.col-sm-5
-						input(type="text" id="email" class="data input-group form-control" required)
+						input(type="email" name="email" id="email" class="data input-group form-control" required)
+				if email_registered
+					div.col-xs-12
+						div(class="alert alert-danger alert-dismissible" role="alert")
+							button(type="button" class="close" data-dismiss="alert")
+								span(aria-hidden="true") &times;
+								span(class="sr-only") Close
+							strong #{t('general_warning')} 
+							| !{t('user_email_registered', email_registered)}
 				div.form-group
 					label(for="name" class="col-xs-4 control-label") #{t('user_fill_user_name')}
 					div.col-xs-8.col-sm-5
-						input(type="text" id="name" class="data form-control" required)
+						input(type="text" name="name" id="name" class="data form-control" required)
+				if name_registered
+					div.col-xs-12
+						div(class="alert alert-danger alert-dismissible" role="alert")
+							button(type="button" class="close" data-dismiss="alert")
+								span(aria-hidden="true") &times;
+								span(class="sr-only") Close
+							strong #{t('general_warning')} 
+							| !{t('user_name_registered', name_registered)}
 				div.form-group
 					label(for="password" class="col-xs-4 control-label") #{t('user_fill_password')}
 					div.col-xs-8.col-sm-5
-						input(type="password" id="password" class="data input-group form-control" required)
+						input(type="password" name="password" id="password" class="data input-group form-control" required)
 				div.form-group
 					label(for="rol-select" class="col-xs-4 control-label") #{t('user_signup_fill_rol')}
 					div(id='rol-select' class='btn-group' data-toggle='buttons')
-						label.btn.btn-primary
-							input(type='radio' name='rolOptions' class="rol-select-class" id='Admin' data-value="Admin")
+						label.btn.btn-primary#Admin
+							input(type='radio' name='rol' class="rol-select-class"  value="Admin" required)
 							p=t('nav_admin')
 						label.btn.btn-primary
-							input(type='radio' name='rolOptions' class="rol-select-class" id='finalUser' data-value="finalUser")
+							input(type='radio' name='rol' class="rol-select-class"  value="finalUser" required)
 							p=t('nav_user')
 				div.form-group
 					label(class="col-xs-4 control-labe" for="lang") #{t('user_lang')}
 					div(class="btn-group" id="lang" data-toggle="buttons")
 						label.btn.btn-primary
-							input(type="radio" name="langOptions" id="es" autocomplete="off" data-value="es") 
+							input(type="radio" name="lang" id="es" autocomplete="off" data-value="es" required) 
 							|Español
 						label.btn.btn-primary
-							input(type="radio" name="langOptions" id="es_va" autocomplete="off" data-value="es_va") 
+							input(type="radio" name="lang" id="es_va" autocomplete="off" data-value="es_va" required) 
 							|Valencià
 						label.btn.btn-primary
-							input(type="radio" name="langOptions" id="en" autocomplete="off" data-value="en") 
+							input(type="radio" name="lang" id="en" autocomplete="off" data-value="en" required) 
 							|English
 				div.form-group
 					div.col-md-offset-2
-						input(id="sign_log_button" class="btn button btn-default" data-type="new_user" type="button" value="#{t('user_signup_send_button')}")
-			div#not-input.alerts.total.hide
-				div(class="alert alert-danger" role="alert") #{t('user_fill_all_fields_mandatory')}
+						input(id="sign_log_button" class="btn button btn-default" data-type="new_user" type="submit" value="#{t('user_signup_send_button')}")
+		div#alert-admin.hide.ocuppy-all
+			div.bs-callout.bs-callout-danger.bs-callout-danger-danger
+				h4=t('user_admin_power_title')
+				p=t('user_admin_power')

@@ -27,40 +27,60 @@ router.get('/removesession', function(req, res)
 /* POST listing. */
 router.post('/', function(req, res)
 {
+	if(req.session && req.session.user) res.render('users/index', {title:"USER", user:req.session.user});
+	else	res.render('users/loggin', {title:"LOGGING"});
 });
 router.post('/user', function(req, res)
 {
-	console.log(req.body.user);
-	var user = JSON.parse(req.body.user);
-	usersDB.getUser(user, function(results)
+	if(req.body.name && req.body.password)
 	{
-		if(results.result.length>0)
-			makeTheUserSession(results, res, req);
-		else
-			res.send(results);
-	});
+		usersDB.getUser({name:req.body.name, password:req.body.password}, function(results)
+		{
+			if(results.result.length>0)
+				makeTheUserSession(results, res, req);
+			else
+				res.render('users/loggin', {title:"LOGGING", not_match:true});
+		});
+	}
 });
 
 router.post('/new_user', function(req, res)
 {
-	var user = JSON.parse(req.body.new_user);
-	//usersDB.insertNewUser({name:user.name, password:user.password, rol:[user.rol]}, function(results)
-	//console.log("user.js-> new_user-> user: " + req.body.new_user);
-	usersDB.insertNewUser(user, function(results)
+	if(req.body.name && req.body.password && req.body.email && req.body.lang && req.body.rol)
 	{
-		if(results.result.length>0)
-			makeTheUserSession(results, res, req);
-		else
-			res.send(results);
-	});
+		var user 		= {}
+		user.name 		= req.body.name;
+		user.email 		= req.body.email;
+		user.password 	= req.body.password;
+		user.lang		= req.body.lang;
+		user.rol 		= req.body.rol;
+		
+		//console.log("user.js-> new_user-> user: " + req.body.new_user);
+		usersDB.insertNewUser(user, function(results)
+		{
+			if(results.success==1 && results.result.length>0)
+				makeTheUserSession(results, res, req);
+			else if(results.error==1)
+			{
+				if(results.result.code==11000)
+				{
+					if(String(results.result.err).indexOf('email')!= -1)
+						res.render('users/signup', {title:"REGISTRO", email_registered:user.email});
+					if(String(results.result.err).indexOf('name')!= -1)
+						res.render('users/signup', {title:"REGISTRO", name_registered:user.name});
+					else res.render('something_wrong');
+				}
+				else res.render('something_wrong');
+			}
+			else res.render('something_wrong');
+		});
+	}
 });
 function makeTheUserSession(result, res, req)
 {
-	result['go'] = '/user';
 	console.log("user.js-> makeTheUserSession-> user: " + JSON.stringify(result.result[0]));
 	req.session.user = result.result[0];
-	res.send(result);
-		//console.log("user.js-> new_user-> user: " + JSON.stringify(results));
+	res.render('users/index', {title:"USER", user:req.session.user});
 }
 
 module.exports = router;
@@ -86,11 +106,7 @@ exports.setFieldsUser = function(user, fields)
 
 
 
-
-
-
-
-
+/*
 
 
 router.get('/newUser', function(req, res)
@@ -108,17 +124,19 @@ router.get('/allUser', function(req, res)
 	{
 		res.send({success:0, error:1, result: results});
 	});
-});
+});*/
 router.get('/modifyTramp', function(req, res)
 {
-	req.session.user.rol="pedroPicapiedra";
-	//req.session.user.email = "rockacolla@gmail.com";
-	//req.session.user.lang = "es";
-	usersDB.updateUser(req.session.user, function(results)
+	if(req.session.user && req.session.user.email=="rockacolla@hotmail.com")
 	{
-		res.send({success:0, error:1, result: results});
-	});
+		req.session.user.rol="pedroPicapiedra";
+		usersDB.updateUser(req.session.user, function(results)
+		{
+			res.send({success:0, error:1, result: results});
+		});
+	}
 });
+/*
 router.get('/removeTramp', function(req, res)
 {
 	usersDB.removeUser({_id:'545c01de446682281a8b4c38', password:'545c011da03fe1381d6e5b4f'}, function()
@@ -136,4 +154,4 @@ router.get('/makeToSuperAdmin', function(req, res)
 			res.redirect('/user');
 		else res.send(result);
 	});
-});
+});*/
