@@ -1,7 +1,11 @@
 var mongoose	= require('mongoose');
 
-
-mongoose.connect('mongodb://localhost/cleanStela', function(err, res) 
+/*mongoose.connect('mongodb://localhost/cleanStela', function(err, res) 
+{
+	if(err) {console.log('ERROR: connecting to Database. ' + err);} 
+	else 	{console.log('Connected to Database');}
+});*/
+mongoose.connect('mongodb://heroku_app32169453:a54ffjp9066cdrqmg539fmtr5d@ds051980.mongolab.com:51980/heroku_app32169453', function(err, res) 
 {
 	if(err) {console.log('ERROR: connecting to Database. ' + err);} 
 	else 	{console.log('Connected to Database');}
