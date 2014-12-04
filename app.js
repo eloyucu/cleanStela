@@ -97,6 +97,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(8080);
+app.listen(process.env.PORT || 5000);
 
 module.exports = app;
