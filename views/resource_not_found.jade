@@ -1,8 +1,6 @@
 include layout
 	block content
-		h1 Resource not found
-		div(class="bs-callout bs-callout-danger col-sm-7")
-			h4 El recurso del sistema que está buscando no está disponible.
-			p Quizá esté invocando el método de manera erronea o con los parámetros confundidos
-				|Le rogamos vuelva a intentarlo pasado un tiempo. 
-				|Si el problema persiste
+		h1=t('general_not_resource')
+		div(class="bs-callout bs-callout-danger col-xs-12")
+			h4=t('general_not_resource_title') 
+			p=t('general_not_resource_paragraph')

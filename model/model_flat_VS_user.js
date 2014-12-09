@@ -113,6 +113,13 @@ var FlatVsUserModel = function(initialModel)
 			}
 		});
 	}
+	this.removeAllTheFlatVsUserOfBuildings = function(buildings,  callback)
+	{
+		Model.remove(buildings, function(err)
+		{
+			callback(err)
+		});
+	}
 	return this;
 }
 module.exports = FlatVsUserModel;

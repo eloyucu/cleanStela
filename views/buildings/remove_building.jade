@@ -1,0 +1,51 @@
+extends ../layout
+block scripts
+	script(type='text/javascript', src='/javascripts/building/remove_my_builds.js')
+block content
+	h1=t('admin_remove_building_title')
+	div.input-group.col-xs-12.left
+		div(class="bs-callout bs-callout-info col-sm-12")
+			h4=t('general_search_title')
+			p=t('general_search')
+				div.input-group.col-sm-4.left
+					span.input-group-addon
+						span.glyphicon.glyphicon-search
+					input(type="text" class="form-control" id="search_building")
+	hr
+	div(class="bs-callout bs-callout-danger col-sm-12")
+		h4=t('remove_info_title')
+		p=t('remove_info')
+		span(class="label label-danger content-label label-as-button" id="delete-building")
+			span.glyphicon.glyphicon-remove
+			|  Eliminar seleccionados
+	hr
+	div.clear
+	div(class="panel-group" id="accordion" role="tablist" aria-multiselectable="true")
+		for building in buildings
+			div(class="panel panel-default search-container" id="remove-#{building._id}")
+				div(class="panel-heading" role="tab" id="heading#{building._id}")
+					h4.panel-title
+						div(class="row")
+							span.col-xs-1
+								input(type="checkbox" class="data" id="#{building._id}" data-building-id="#{building._id}")
+							div.col-sm-4.col-xs-5.inline.search-hit #{building.address.address}
+							div.col-sm-2.col-xs-4.inline.search-hit #{building.address.city}
+							div.col-sm-2.inline.search-hit.disapear #{building.address.province}
+							div.col-sm-1.inline.search-hit.disapear #{building.address.state}
+							div-col-sm-2.col-xs-2.inline
+								span(class="label label-danger content-label label-as-button delete-building" data-building-id="#{building._id}")
+									span.glyphicon.glyphicon-remove
+									|  Eliminar
+	div(class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+				div.modal-dialog
+					div.modal-content
+						div.modal-header
+							button(type="button" class="close" data-dismiss="modal")
+								span(aria-hidden="true") &times;
+								span.sr-only Close
+							h4.modal-title#myModalLabel=t('admin_remove_select_unless_one_tittle')
+						div.modal-body
+								p=t('admin_remove_select_unless_one')
+						div.modal-footer
+							button(type="button" class="btn btn-default" data-dismiss="modal") Close
+	div#special

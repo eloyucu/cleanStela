@@ -1,6 +1,6 @@
 extends ../layout
 block scripts
-	script(type='text/javascript', src='/javascripts/user/sign_log.js')
+	script(type='text/javascript', src='/javascripts/building/my_builds.js')
 block content
 	div.box-form
 		h1=t('buildings_new_one_title')
@@ -8,27 +8,35 @@ block content
 			h4=t('user_fill_all_fields')
 			p=t('buildings_new_one_explanation')
 		hr
-		form(class="form-horizontal" role="form")
+		form(class="form-horizontal" role="form" method="POST" action="new_building")
+			if building_registered
+				div.col-xs-12
+					div(class="alert alert-danger alert-dismissible" role="alert")
+						button(type="button" class="close" data-dismiss="alert")
+							span(aria-hidden="true") &times;
+							span(class="sr-only") Close
+						strong #{t('general_warning')} 
+						| !{t('building_address_registered', name_registered)}
 			div.form-group
 				label(for="address" class="col-sm-2 control-label") #{t('buildings_new_one_address')}
 				div.col-xs-10.col-sm-5
-					input(type="text" id="address" class="data form-control")
+					input(type="text" name="address" class="data form-control" required)
 			div.form-group
 				label(for="city" class="col-sm-2 control-label") #{t('buildings_new_one_city')}
 				div.col-xs-10.col-sm-5
-					input(type="text" id="city" class="data form-control")
+					input(type="text" name="city" class="data form-control" required)
 			div.form-group
 				label(for="ZIP_code" class="col-sm-2 control-label") #{t('buildings_new_one_ZIP')}
 				div.col-xs-10.col-sm-5
-					input(type="text" id="ZIP_code" class="data form-control")
+					input(type="text" name="ZIP_code" class="data form-control" required)
 			div.form-group
 				label(for="province" class="col-sm-2 control-label") #{t('buildings_new_one_province')}
 				div.col-xs-10.col-sm-5
-					input(type="text" id="province" class="data form-control")
+					input(type="text" name="province" class="data form-control" required)
 			div.form-group
 				label(for="state" class="col-sm-2 control-label") #{t('buildings_new_one_state')}
 				div.col-xs-10.col-sm-5
-					input(type="text" id="state" class="data form-control")
+					input(type="text" name="state" class="data form-control" required)
 			div.form-group
 				div.col-sm-offset-10
-					input(id="sign_log_button" class="btn button btn-default" data-type="new_building" type="button" value="#{t('buildings_new_one_send')}")
+					input(id="create_building_button" class="btn button btn-default" data-type="new_building" type="submit" value="#{t('buildings_new_one_send')}")

@@ -37,18 +37,26 @@ block content
 							div.tab-content
 								div(role="tabpanel" class="tab-pane active" id="messages#{building._id}")
 									for message in building.messages
-										div(class="bs-callout bs-callout-warning col-sm-12")
-											h4.left-float=message.title
-											h2.right-nomargin=message.user_name
-											div.clear
+										div(class="messages")
+											h2.user-message=message.user_name
+											h4.left=message.title
 											h5.right=message.date
-											div.clear
-											p.margin-bottom.col-sm-10.col-xs-12=message.message
-											input(class="btn button btn-default response" data-msn-id="#{message._id}" data-building-id="#{building._id}" type="button" value="#{t('email_response_button')}")
-											for answer in message.answers
-												div(class="bs-callout bs-callout-info col-sm-12")
-													h4=answer.user_name
-													p.margin-bottom=answer.message		
+											div.row
+											p.margin-bottom.col-xs-12=message.message
+											a(rel="tooltip" class="response button-messages" data-toggle="tooltip" data-placement="top" title="#{t('email_response_response')}")
+												span(class="glyphicon glyphicon-paperclip" data-msn-id="#{message._id}" data-building-id="#{building._id}")
+											a(rel="tooltip" class="vote-favor button-messages" data-toggle="tooltip" data-placement="top" title="#{t('email_response_vote_favor')}")
+												span(class="glyphicon glyphicon-hand-up" data-msn-id="#{message._id}" data-building-id="#{building._id}")
+											a(rel="tooltip" class="vote-against button-messages" data-toggle="tooltip" data-placement="top" title="#{t('email_response_vote_against')}")
+												span(class="glyphicon glyphicon-thumbs-down" data-msn-id="#{message._id}" data-building-id="#{building._id}")
+											if message.answers.length
+												p(class="show_messages right-nomargin" data-msn-id="#{message._id}" data-msn-hide-show="#{t('email_hide_messages')}") #{t('email_show_messages')}
+												div(id="#{message._id}" style="display:none; width:100%;")
+													for answer in message.answers
+														hr
+														div(class="messages_answer")
+															h4=answer.user_name
+															p.margin-bottom=answer.message
 									else
 										div(class="alert alert-warning alert-dismissible" id="myAlert" role="alert")
 											button(type="button" class="close" data-dismiss="alert")
@@ -77,14 +85,35 @@ block content
 					span(class="sr-only") Close
 				strong=t("calendar_no_building_warning")
 				| #{t("calendar_no_building")}
-		div.hide.ocuppy-all#response
-			div.form-ocuppy-all
-				form(class="form-horizontal" role="form" method="POST" action="comunity")
-					div.form-group
-						label(for="message" class="col-sm-2 control-label") Mensaje
-						div.col-xs-12
-							textarea(type="text" rows="7" name="answer_message" id="message_response" class="data form-control" required)
-					input(type="text" name="msn_id" id="answer_to_response" class="data form-control hide" value="")
-					div.form-group
-						div.col-sm-offset-10
-							input(class="btn button btn-default" type="submit" value="#{t('email_send_button')}")
+		div(class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+			div.modal-dialog
+				div.modal-content
+					div.modal-header
+						button(type="button" class="close" data-dismiss="modal")
+							span(aria-hidden="true") &times;
+							span.sr-only Close
+						h4.modal-title#myModalLabel=t('email_response_modal_title')
+					div.modal-body
+						form(class="form-horizontal" role="form" method="POST" action="comunity")
+							div.form-group
+								label(for="message" class="col-sm-2 control-label") Mensaje
+								div.col-xs-12
+									textarea(type="text" rows="7" name="answer_message" id="message_response" class="data form-control" required)
+							input(type="text" name="msn_id" id="answer_to_response" class="data form-control hide" value="")
+							hr
+							div.form-group
+								div.col-xs-offset-8
+									input(class="btn button btn-primary right-margin" type="submit" value="#{t('email_send_button')}")
+									button(type="button" class="btn btn-default" data-dismiss="modal") Close
+		
+		div(class="modal fade" id="votesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+			div.modal-dialog
+				div.modal-content
+					div.modal-header
+						button(type="button" class="close" data-dismiss="modal")
+							span(aria-hidden="true") &times;
+							span.sr-only Close
+						h4.modal-title#myModalLabel=t('general_not_implemented_title')
+					div.modal-body=t('general_not_implemented')
+					div.modal-footer
+						button(type="button" class="btn btn-default" data-dismiss="modal") Close

@@ -1,8 +1,5 @@
 jQuery('document').ready(function()
 {
-	$('#myAlert').on('closed.bs.alert', function () {
-		alert("HOLA es el id myAlert en publi/javascript/my_builds.js ");
-	});
 	jQuery('#accordion').collapse();
 	jQuery('.upload').on('click', function()
 	{
@@ -24,7 +21,7 @@ jQuery('document').ready(function()
 		}
 		var data = 'building={"flats":' + JSON.stringify(flats) + ',"_id":"' + data_building_id + '", "cleanTurn":"' + cleanTurn + '"}' ;
 		//alert(admin_buildings);
-		if(cleanTurn!="aaa&&&%%%111") makeTheRequest('POST', 'admin_buildings', data, 'json', onSuccessSignLog, onErrorGenericAJAX);
+		if(cleanTurn!="aaa&&&%%%111") makeTheRequest('POST', 'admin_buildings', data, 'json', onSuccessUpdate, onErrorGenericAJAX);
 		else alert("Es necesario marcar una de las viviendas como el actual turno de limpieza");
 	});
 	jQuery('.setup-flat-adds').on('click', function()
@@ -81,6 +78,10 @@ jQuery('document').ready(function()
 	{
 		jQuery('#'+jQuery(this).attr('data-clean-turn')).removeClass("label-success").addClass("label-warning");
 	});
+	jQuery('.data').focusout(function()
+	{	
+		jQuery(this).val(makeCapitalFirstLetter(jQuery(this).val()));
+	});
 });
 function getCell(value, data_building_id)
 {
@@ -98,30 +99,36 @@ function getCell(value, data_building_id)
 				'</div>'+
 			'</div>';
 }
-function onSuccessSignLog(data)
+function onSuccessUpdate(data)
 {
-	jQuery('#special-content').html("aquí: " + JSON.stringify(data));
-	/*if(data.error==1)
+	if(data.error==1)
 	{
-		if(data.result.name=="MongoError" && data.result.code==11000)
-		{
-			jQuery('#name').parent().addClass('has-error');
-			alert(data_types[data_type] + " is registered.");
-		}
-		else if(data.result.name=="ValidationError")
-		{
-			for(var key in data.result.errors)
-				jQuery('#'+key).parent().addClass('has-error');
-			alert("Please check all the fields of the form.");
-		}
-		else
-			alert(JSON.stringify(data));
+		jQuery('#errorModal_p').html(JSON.stringify(data));
+		jQuery('#errorModal').modal();
 	}
 	else
-	{
-		if(data.go)
-			window.location.href = server+data.go;
+		jQuery('#successModal').modal();
+}
+function onSuccessSignLog(data)
+{
+}
+
+function makeCapitalFirstLetter(string)
+{
+	var arrayWords;
+	var returnString = "";
+	var len;
+	arrayWords = string.split(" ");
+	len = arrayWords.length;
+	for(i=0;i < len ;i++)
+		if(i != (len-1))
+			returnString = returnString+ucFirst(arrayWords[i])+" ";
 		else
-			alert(data);
-	}*/
+			returnString = returnString+ucFirst(arrayWords[i]);
+			
+	return returnString;
+}
+function ucFirst(string)
+{
+	return string.substr(0,1).toUpperCase()+string.substr(1,string.length).toLowerCase();
 }

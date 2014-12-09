@@ -33,9 +33,7 @@ nav(class="navbar navbar-default navbar-fixed-top" id="navbar-magellan" role="na
 						ul(class="dropdown-menu" role="menu")
 							li: a(href="/new_building") #{t("nav_admin_new_building")}
 							li: a(href="/admin_buildings") #{t("nav_admin_admin_building")}
-							li: a(href="#") #{t("nav_admin_remove_building")}
-							li.divider
-							li: a(href="/removesession") #{t("nav_user_close")}
+							li: a(href="/remove_building") #{t("nav_admin_remove_building")}
 				else if !user
 					li.dropdown 
 						a(href="#" class="dropdown-toggle" data-toggle="dropdown") #{t("nav_user")}

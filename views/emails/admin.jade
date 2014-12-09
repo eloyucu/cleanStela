@@ -20,9 +20,9 @@ block content
 							div.row
 								div.col-xs-1
 									span.glyphicon.glyphicon-map-marker
-								div.col-xs-4.inline.search-hit #{building.address[0].address}
-								div.col-xs-3.inline.search-hit #{building.address[0].city}
-								div.col-xs-3.inline.search-hit #{building.address[0].state}
+								div.col-xs-4.inline.search-hit #{building.address.address}
+								div.col-xs-3.inline.search-hit #{building.address.city}
+								div.col-xs-3.inline.search-hit #{building.address.state}
 			div(id="collapse#{building._id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading#{building._id}")
 				div.panel-body
 					form(class="form-horizontal" role="form" method="POST" action="admin")
@@ -35,9 +35,9 @@ block content
 							div.col-xs-10.col-sm-5
 								textarea(type="text" name="message" id="message" class="data form-control" required)
 						input(type="text" name="admin_id" id="admin_id" class="data form-control hide" value="#{building.admin_id}")
-						input(type="text" name="address" id="admin_id" class="data form-control hide" value="#{building.address[0].address}")
-						input(type="text" name="city" id="admin_id" class="data form-control hide" value="#{building.address[0].city}")
-						input(type="text" name="state" id="admin_id" class="data form-control hide" value="#{building.address[0].state}")
+						input(type="text" name="address" id="admin_id" class="data form-control hide" value="#{building.address.address}")
+						input(type="text" name="city" id="admin_id" class="data form-control hide" value="#{building.address.city}")
+						input(type="text" name="state" id="admin_id" class="data form-control hide" value="#{building.address.state}")
 						div.form-group
 							div.col-sm-offset-10
 								input(id="send_the_mail" class="btn button btn-default"  type="submit" value="#{t('email_send_button')}")

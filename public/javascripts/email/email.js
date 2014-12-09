@@ -1,6 +1,7 @@
 var ocuppy = true;
 jQuery('document').ready(function()
-{
+{	
+	jQuery('[data-toggle="tooltip"]').tooltip();
 	jQuery('#send_the_mail').on('click', function()
 	{
 		data_type  = jQuery(this).attr("data-type");
@@ -24,9 +25,17 @@ jQuery('document').ready(function()
 	});
 	jQuery('.response').on('click', function()
 	{
-		jQuery('#response').removeClass('hide');
+		jQuery('#responseModal').modal();
 		//jQuery('#response').addClass('ocuppy-all');
 		jQuery('#answer_to_response').attr('value',jQuery(this).attr('data-msn-id'));
+	});
+	jQuery('.vote-favor').on('click', function()
+	{
+		jQuery('#votesModal').modal();
+	});
+	jQuery('.vote-against').on('click', function()
+	{
+		jQuery('#votesModal').modal();
 	});
 	jQuery('.ocuppy-all').on('click', function()
 	{
@@ -37,6 +46,14 @@ jQuery('document').ready(function()
 	jQuery('.form-ocuppy-all').on('click', function()
 	{
 		ocuppy = false;
+	});
+	jQuery('.show_messages').on('click', function()
+	{
+		var id = jQuery(this).attr('data-msn-id');
+		jQuery('#'+id).toggle(500);
+		var hide_show = jQuery(this).attr('data-msn-hide-show');
+		jQuery(this).attr('data-msn-hide-show', jQuery(this).html());
+		jQuery(this).html(hide_show);
 	});
 });
 function onSuccessSend(data)

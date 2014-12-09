@@ -59,10 +59,14 @@ var BuildingModel = function(initialModel)
 			}
 		});
 	}
-	this.remove=function()
+	this.removeBuilding = function(buildings,  callback)
 	{
-		Model.remove();
+		Model.remove(buildings, function(err)
+		{
+			callback(err)
+		});
 	}
+	
 	return this;
 }
 module.exports = BuildingModel;

@@ -18,7 +18,7 @@ jQuery('document').ready(function()
 		//data =data.replace(/\"/g,'"');
 		jQuery('#special-container').append(data);
 		jQuery('#special-container').append(" EStees el id a actualizar: " + id_to_update);
-		makeTheRequest("PUT", 'users', "param=" + data, 'json', function(){jQuery("#"+id_to_update).remove();}, onErrorGenericAJAX);
+		makeTheRequest("POST", 'users', "param=" + data, 'json', function(){jQuery("#"+id_to_update).remove();}, onErrorGenericAJAX);
 	});
 	jQuery('.modify').on('click',function()
 	{

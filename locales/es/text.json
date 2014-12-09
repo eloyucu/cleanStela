@@ -18,6 +18,14 @@
 	"general_search_title":"Búsqueda más fácil.",
 	"general_search":"Puede buscar el edificio que desea escribiendo en el área de búsqueda. Puede introducir el nombre de la calle, del pueblo/ciudad, de la provincia o del país... aunque una búsqueda más concreta traerá consigo resultados mejor filtrados.",
 	"general_warning":"¡¡Ojito!!",
+	"general_not_resource":"Recurso no encontrado.",
+	"general_not_resource_title":"El recurso del sistema que está buscando no está disponible.",
+	"general_not_resource_paragraph":"Quizá esté invocando el método de manera erronea o con los parámetros confundidos. También es posible que aún no se hayan creado ningún edificio o ninguno de los recursos que busca, o sea, la causa puede que el recurso no exista y no que no esté siendo encontrado. Le rogamos vuelva a intentarlo pasado un tiempo. Si el problema persiste puede enviarme un mensaje indicando el tipo de recurso al que está intentando acceder. Gracias.",
+	"general_not_allowed":"Recurso no permitido.",
+	"general_not_allowed_title":"No tiene presmisos para acceder a este recurso del sistema.",
+	"general_not_allowed_paragraph":"En estos momentos, su perfil de usuario (rol) no le permite acceder a ciertas características de la aplicación. Si cree que este recurso debería de estar disponibe para usted envíeme un mensaje y comenteme la situación. Gracias.",
+	"general_not_implemented_title":"Esta funcionalidad no está operativa",
+	"general_not_implemented":"Sintiéndolo mucho, esta funcionalidad a la que está intentando acceder aún no está implementada. Se muestra aquí con la intención de realizar una especie de encuesta... si recibo los suficientes mensajes a favor del desarrollo de la misma, pues no me quedará más remedio que realizar el trabajo. En caso contrario, esto nunca se modificará. Gracias.",
 	
 	"landing_wellcome":"Bienvenidos a CleanStela",
 	"landing_instructions":"El primer paso para acceder al interior de la aplicación y poder disfrutar de las ventajas que ofrece (de momento limitadas), tiene que registrarse. Para ello vaya al menú de \"Usuario\" y seleccione \"Registro\". Si usted ya está registrado y ha cerrado la sesión despliegue el \"Usuario\" y seleccione \"Acceder\"",
@@ -56,6 +64,12 @@
 	
 	"user_admin_search_info":"Comience a escribir los términos de búsqueda. A medida que escriba irán desapareciendo los elementos NO coincidentes.",
 	
+	"admin_remove_select_unless_one_tittle":"Tienes que elegir al menos un edificio.",
+	"admin_remove_select_unless_one":"Has intentado realizar una acción de borrado general sobre muchos edificios preseleccionados... pero no has seleccionado ningún edificio. Como podrás entender tras leer esto, tu intención es inverosímil, no se sostiene por ningún sitio, es como cuando alguien se olvida el móvil y tú intentas avisarle LLAMÁNDOLE AL MÓVIL!! No puede ser. Por favor, selecciona al menos un edificio. Gracias.",
+	"admin_remove_building_title":"Elimine los edificios que crea convenientes",
+	"remove_info_title":"Seleccione y elimine.",
+	"remove_info":"Puede realizar la eliminación de los elementos borrando uno por uno o seleccionando los que desee eliminar, marcándolos con el tic de la izquierda, y después apretando el botón de 'Eliminar selecionados'",
+	
 	"buildings_new_one_title":"Inserte nuevo edificio",
 	"buildings_new_one_explanation_title":"Y ahora... ¿Qué?",
 	"buildings_new_one_explanation":"Los edificios tienen que estar bien creados para que los usuarios los encuentren, para ello, además del nombre de la calle del edificio, deberá poner el número. Si dos edificios comparten turnos de limpieza no hará falta poner número y se pondrá una marca identificativa después de la dirección, además en casos como éste surjirá el problema que haya varias puertas con el mismo nombre, por ejemplo: 1A, en casos como éste se podría proceder del siguiente modo, 101A para el 1A del bloque 1, y 201A para el 1A del bloque dos.",
@@ -65,10 +79,15 @@
 	"buildings_new_one_province":"Provincia",
 	"buildings_new_one_state":"Estado/País",
 	"buildings_new_one_send":"Crear",
+	"building_address_registered":"Lo sentimos pero este edificio (con esta dirección) ya está registrado, si eres el administrador, podrás configurar los pisos en la sección de 'Configurar edificios' del menú 'Administrador'. Si no eres el administrador pero crees que deberías serlo ponte en contacto con el equipo de mantenimiento (o sea... yo), y trataremos de arreglarlo.",
 	
 	"admin_admin_building_title":"Administra tus edificios.",
 	"admin_no_buildings":"Lo sentimos aún no hay edificios bajo su administración.",
 	"admin_no_flats":"Aún no hay pisos incorporados al edificio.",
+	"admin_admin_error_modal_title":"Algo salió mal",
+	"admin_admin_error_modal_body":"Ha ocurrido algún error durante la modificación de los datos. Vuelva a intentarlo pasado un tiempo. Si el problema persiste, por favor, comuníquenoslo. Gracias.",
+	"admin_admin_success_modal_title":"Todo en orden.",
+	"admin_admin_success_modal_body":"Los cambios se han realizado con éxito y los usuarios ya pueden disfrutar de ellos. Gracias.",
 	
 	"calendar_title":"Revise las fechas de sus viviendas.",
 	"calendar_no_building_warning":"Atención.",
@@ -90,5 +109,10 @@
 	"email_cominity_messages_tab":"Mensajes enviados",
 	"email_no_msn_title":"Sin mensajes",
 	"email_no_msn":"Aún no hay ningún mensaje en esta comunidad",
-	"email_response_button":"Responder"
+	"email_show_messages":"Mostrar respuestas",
+	"email_hide_messages":"Ocultar respuestas",
+	"email_response_modal_title":"Escriba su mensaje de respuesta.",
+	"email_response_response":"Responder",
+	"email_response_vote_favor":"A favor",
+	"email_response_vote_against":"En contra"
 }

@@ -21,10 +21,10 @@ block content
 							div.row
 								div.col-xs-1
 									span.glyphicon.glyphicon-map-marker
-								div.col-xs-4.inline.search-hit #{building.address[0].address}
-								div.col-xs-3.inline.search-hit #{building.address[0].city}
-								div.col-xs-2.inline.search-hit.disapear #{building.address[0].province}
-								div.col-xs-2.inline.search-hit.disapear #{building.address[0].state}
+								div.col-xs-4.inline.search-hit #{building.address.address}
+								div.col-xs-3.inline.search-hit #{building.address.city}
+								div.col-xs-2.inline.search-hit.disapear #{building.address.province}
+								div.col-xs-2.inline.search-hit.disapear #{building.address.state}
 			div(id="collapse#{building._id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading#{building._id}")
 				div.panel-body
 					div(class="setup-table table" id="setup-#{building._id}")

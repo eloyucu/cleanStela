@@ -46,13 +46,12 @@ router.post('/user', function(req, res)
 
 router.post('/new_user', function(req, res)
 {
-	if(req.body.name && req.body.password && req.body.email && req.body.lang && req.body.rol)
+	if(req.body.name && req.body.password && req.body.email && req.body.rol)
 	{
 		var user 		= {}
 		user.name 		= req.body.name;
 		user.email 		= req.body.email;
 		user.password 	= req.body.password;
-		user.lang		= req.body.lang;
 		user.rol 		= req.body.rol;
 		
 		//console.log("user.js-> new_user-> user: " + req.body.new_user);
@@ -75,6 +74,7 @@ router.post('/new_user', function(req, res)
 			else res.render('something_wrong');
 		});
 	}
+	else	res.render('users/loggin', {title:"LOGGING"});
 });
 function makeTheUserSession(result, res, req)
 {

@@ -92,7 +92,7 @@ router.get('/my_buildings', function(req, res)
 								calendars.push(actual_month);
 								
 								
-							var _building 		= {address: BU_results.result[building].address[0]};
+							var _building 		= {address: BU_results.result[building].address};
 							_building._id		= BU_results.result[building]._id;
 							_building.calendars = calendars;
 							_building.flat		= FL_US_results.result[fl_us].flat;
@@ -114,7 +114,7 @@ router.get('/choose_building', function(req, res)
 	if(req.session && req.session.user)
 		buildingDB.getBuilding('all', function(buildingResults)
 		{	
-			if(buildingResults.error==1 || buildingResults.result.length==0) res.render('resource_not_found');
+			if(buildingResults.error==1 || buildingResults.result.length==0) res.render('resource_not_found', {user:req.session.user});
 			else
 			{
 				fl_us_DB.getFieldsFlatVsUser({user_id:req.session.user._id}, {building_id:1, flat:1}, function(userResults)

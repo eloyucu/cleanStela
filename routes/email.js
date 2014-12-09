@@ -40,7 +40,7 @@ router.get('/comunity', function(req, res)
 	{
 		fl_us_DB.getFlatVsUser({user_id:req.session.user._id}, function(FL_US_results)
 		{
-			if(FL_US_results.result.length>0)
+			buildingDB.getBuilding({admin_id:req.session.user._id}, function(BU_results)
 			{
 				var _ids_building = [];
 				var _ids_messages = [];
@@ -51,44 +51,52 @@ router.get('/comunity', function(req, res)
 					_ids_building.push({_id:FL_US_results.result[i].building_id});
 					_ids_messages.push({$and:[{building_id:FL_US_results.result[i].building_id}, {date:{$gte:dateSearch}}]});
 				}
-				msn_DB.getMsn({ $query:{$or:_ids_messages}, $orderby: { date : -1, _id: 1 } }, function(MSN_results)
+				for(var i in BU_results.result)
 				{
-					buildingDB.getBuilding({ $or:_ids_building}, function(BU_results)
+					_ids_building.push({_id:BU_results.result[i]._id});
+					_ids_messages.push({$and:[{building_id:BU_results.result[i]._id}, {date:{$gte:dateSearch}}]});
+				}
+				if(FL_US_results.result.length>0 || BU_results.result.length>0)
+				{
+					msn_DB.getMsn({ $query:{$or:_ids_messages}, $orderby: { date : -1, _id: 1 } }, function(MSN_results)
 					{
-						
-						var buildings = [];
-						var index_i = 0;
-						for(var i in BU_results.result)
+						buildingDB.getBuilding({ $or:_ids_building}, function(BU_results)
 						{
-							var building 		= {address: BU_results.result[i].address[0]};
-							building._id	= BU_results.result[i]._id;
-							building.messages=[];
-							var answer_messages = [];
-							var index_j = 0;
-							for(var j in MSN_results.result)
+							
+							var buildings = [];
+							var index_i = 0;
+							for(var i in BU_results.result)
 							{
-								if(String(MSN_results.result[j].building_id).indexOf(String(BU_results.result[i]._id))!=-1)
+								var building 		= {address: BU_results.result[i].address};
+								building._id	= BU_results.result[i]._id;
+								building.messages=[];
+								var answer_messages = [];
+								var index_j = 0;
+								for(var j in MSN_results.result)
 								{
-									building.messages[index_j]={};
-									building.messages[index_j].title 		= MSN_results.result[j].title;
-									building.messages[index_j].message 		= MSN_results.result[j].message;
-									building.messages[index_j]._id	 		= MSN_results.result[j]._id;
-									building.messages[index_j].user_name	= MSN_results.result[j].user_name;
-									building.messages[index_j].answers		= MSN_results.result[j].answers;
-									var date 								= new Date(MSN_results.result[j].date)
-									building.messages[index_j].date 		= date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
-									index_j++;
+									if(String(MSN_results.result[j].building_id).indexOf(String(BU_results.result[i]._id))!=-1)
+									{
+										building.messages[index_j]={};
+										building.messages[index_j].title 		= MSN_results.result[j].title;
+										building.messages[index_j].message 		= MSN_results.result[j].message;
+										building.messages[index_j]._id	 		= MSN_results.result[j]._id;
+										building.messages[index_j].user_name	= MSN_results.result[j].user_name;
+										building.messages[index_j].answers		= MSN_results.result[j].answers;
+										var date 								= new Date(MSN_results.result[j].date)
+										building.messages[index_j].date 		= date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
+										index_j++;
+									}
 								}
+								buildings[index_i] = building;
+								index_i++;
 							}
-							buildings[index_i] = building;
-							index_i++;
-						}
-						res.render('emails/comunity', {title:"NEIGHBORHOOD", buildings:buildings, user:req.session.user});
-						//res.send(buildings);
+							res.render('emails/comunity', {title:"NEIGHBORHOOD", buildings:buildings, user:req.session.user});
+							//res.send(buildings);
+						});
 					});
-				});
-			}
-			else res.render('emails/comunity', {title:"NEIGHBORHOOD", buildings:[], user:req.session.user});
+				}
+				else res.render('emails/comunity', {title:"NEIGHBORHOOD", buildings:[], user:req.session.user});
+			});
 		});
 	}
 });
@@ -181,6 +189,7 @@ router.post('/comunity', function(req, res)
 							if(BU_results.success==1)
 							{
 								var _ids = [];
+								_ids.push({_id:BU_results.result[0].admin_id});
 								for(var i in FL_US_results.result)
 									_ids.push({_id:FL_US_results.result[i].user_id});
 								usersDB.getUser({ $or:_ids}, function(US_results)
@@ -190,9 +199,9 @@ router.post('/comunity', function(req, res)
 										var text = "";
 										text = "Name:" 		+ req.session.user['name'] + "<br>";
 										text += "Email:" 	+ req.session.user['email'] + "<br>";
-										text += "Address:" 	+ BU_results.result[0].address[0].address + "<br>";
-										text += "City:" 	+ BU_results.result[0].address[0].city + "<br>";
-										text += "State:" 	+ BU_results.result[0].address[0].state + "<br>";
+										text += "Address:" 	+ BU_results.result[0].address.address + "<br>";
+										text += "City:" 	+ BU_results.result[0].address.city + "<br>";
+										text += "State:" 	+ BU_results.result[0].address.state + "<br>";
 										
 										for(var i in US_results.result)
 											helper.sendAnEmail(US_results.result[i].email, "CleanStela: " + message.title, "USER<br>" + text+ "<br> <br>", "MESSAGE<br>" + message.message); 
