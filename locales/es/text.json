@@ -25,7 +25,7 @@
 	"general_not_allowed_title":"No tiene presmisos para acceder a este recurso del sistema.",
 	"general_not_allowed_paragraph":"En estos momentos, su perfil de usuario (rol) no le permite acceder a ciertas características de la aplicación. Si cree que este recurso debería de estar disponibe para usted envíeme un mensaje y comenteme la situación. Gracias.",
 	"general_not_implemented_title":"Esta funcionalidad no está operativa",
-	"general_not_implemented":"Sintiéndolo mucho, esta funcionalidad a la que está intentando acceder aún no está implementada. Se muestra aquí con la intención de realizar una especie de encuesta... si recibo los suficientes mensajes a favor del desarrollo de la misma, pues no me quedará más remedio que realizar el trabajo. En caso contrario, esto nunca se modificará. Gracias.",
+	"general_not_implemented":"Sintiéndolo mucho, la funcionalidad a la que está intentando acceder aún no está implementada. Se muestra aquí con la intención de realizar una especie de encuesta... si recibo los suficientes mensajes a favor del desarrollo de la misma, pues no me quedará más remedio que realizar el trabajo. En caso contrario, esto nunca se modificará. Gracias.",
 	
 	"landing_wellcome":"Bienvenidos a CleanStela",
 	"landing_instructions":"El primer paso para acceder al interior de la aplicación y poder disfrutar de las ventajas que ofrece (de momento limitadas), tiene que registrarse. Para ello vaya al menú de \"Usuario\" y seleccione \"Registro\". Si usted ya está registrado y ha cerrado la sesión despliegue el \"Usuario\" y seleccione \"Acceder\"",
